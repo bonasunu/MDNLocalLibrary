@@ -1,8 +1,8 @@
-const info = (...params) => {
-  if (process.env.NODE_ENV !== 'test') console.log(...params)
+const info = async (...params) => {
+  if (process.env.NODE_ENV !== 'test') await console.log(...params)
 }
 
-const error = (...params) => console.log(...params)
+const error = async (...params) => await console.log(...params)
 
 module.exports = {
   info,
