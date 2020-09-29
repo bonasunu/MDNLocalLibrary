@@ -1,17 +1,21 @@
 'use strict'
 const { Model } = require('sequelize')
 const bcrypt = require('bcrypt')
-const jwt = require('jwt')
+const jwt = require('jsonwebtoken')
 const config = require('../../utils/config')
 
 module.exports = (sequelize, DataTypes) => {
   class Users extends Model {
     static associate(models) {}
     static #encrypt = (password) => bcrypt.hashSync(password, 10)
-    static register = ({ username, password }) => {
+    static register = ({ username, password, role }) => {
       const passwordHash = this.#encrypt(password)
 
-      return this.create({ username, password: passwordHash })
+      return this.create({
+        username,
+        password: passwordHash,
+        role,
+      })
     }
 
     checkPassword = (password) => bcrypt.compareSync(password, this.password)
