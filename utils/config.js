@@ -7,6 +7,7 @@ const HOST = process.env.HOST
 const DB_DEV = process.env.DB_DEV
 const DB_TEST = process.env.DB_TEST
 const DB_PROD = process.env.DB_DEV
+const SECRET = process.env.SECRET
 
 module.exports = {
   PORT,
@@ -16,4 +17,5 @@ module.exports = {
   DB_DEV,
   DB_TEST,
   DB_PROD,
+  SECRET,
 }
